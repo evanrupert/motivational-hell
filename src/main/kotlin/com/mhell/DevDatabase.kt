@@ -19,8 +19,8 @@ class DevDatabase : MhellDatabase {
         val dbPassword = System.getenv("MHELL_DB_PASSWORD") ?: ""
 
         val config = HikariConfig()
-        config.driverClassName = "org.postgresql.Driver"
-        config.jdbcUrl = "jdbc:postgresql://localhost:5432/mhell"
+        config.driverClassName = "com.mysql.jdbc.Driver"
+        config.jdbcUrl = "jdbc:mysql://localhost:3306/mhell"
         config.username = dbUser
         config.password = dbPassword
         config.maximumPoolSize = 3

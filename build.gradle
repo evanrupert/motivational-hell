@@ -30,13 +30,14 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 
-	compile 'org.postgresql:postgresql:42.2.2'
+//	compile 'org.postgresql:postgresql:42.2.2'
+    compile "mysql:mysql-connector-java:5.1.46"
 	compile 'com.zaxxer:HikariCP:2.7.8'
 	compile 'org.jetbrains.exposed:exposed:0.13.2'
 }
 
 task migrateDB(type: FlywayMigrateTask) {
-	url ='jdbc:postgresql://localhost:5432/mhell'
+	url ='jdbc:mysql://localhost:3306/mhell'
 	user = "$System.env.MHELL_DB_USERNAME"
 	password = "$System.env.MHELL_DB_PASSWORD"
 }
