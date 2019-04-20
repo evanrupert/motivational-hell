@@ -7,17 +7,17 @@ import java.util.*
 object UserRepo : Repo() {
 
     object Users : Table("users") {
-        val id = uuid("id")
+        val id = varchar("id", 36)
         val email = varchar("email", 255)
         val password = varchar("password", 255)
         val balance = decimal("balance", 12, 2)
 
         fun toUser(row: ResultRow): User =
             User(
-                id = row[Users.id],
-                email = row[Users.email],
-                password = row[Users.password],
-                balance = row[Users.balance]
+                id = row[id],
+                email = row[email],
+                password = row[password],
+                balance = row[balance]
             )
     }
 
@@ -25,7 +25,7 @@ object UserRepo : Repo() {
         Users.selectAll().map(Users::toUser)
     }
 
-    fun find(id: UUID): User = query {
+    fun find(id: String): User = query {
         Users.select { Users.id eq id }.map(Users::toUser).first()
     }
 
@@ -46,7 +46,7 @@ object UserRepo : Repo() {
         }
     }
 
-    fun delete(id: UUID) = query {
+    fun delete(id: String) = query {
         Users.deleteWhere { Users.id eq id }
     }
 }

@@ -8,5 +8,5 @@ data class User(
     val password: String = "",
     val balance: BigDecimal = BigDecimal.ZERO.setScale(2),
 
-    val id: UUID = UUID.randomUUID()
+    val id: String = UUID.randomUUID().toString()
 )
