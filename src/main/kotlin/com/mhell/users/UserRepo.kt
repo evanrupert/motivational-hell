@@ -10,7 +10,7 @@ object UserRepo : Repo() {
         val id = uuid("id")
         val email = varchar("email", 255)
         val password = varchar("password", 255)
-        val balance = decimal("balance", 2, 2)
+        val balance = decimal("balance", 12, 2)
 
         fun toUser(row: ResultRow): User =
             User(
